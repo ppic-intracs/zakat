@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="id">
 
@@ -547,7 +548,7 @@
 				</tr>
 				<tr>
 					<td>Harga Emas Saat Ini (1 Gram)</td>
-					<td style="text-align: right" id="hasil_harga_emas">951,000</td>
+					<td style="text-align: right" id="hasil_harga_emas"></td>
 				</tr>
 				<tr style="font-weight: bold">
 					<td>Besar Nisab Zakat Maal Per Tahun</td>
@@ -601,6 +602,8 @@ $(document).ready(function(){
 		$('#hasil_properti').html(properti);
 		$('#hasil_piutang').html(piutang);
 		$('#hasil_hutang').html(hutang);
+        $('#hasil_harga_emas').html(harga_emas);
+
 
 		tabungan = tabungan.replace(/\./g, "");
 		emas = emas.replace(/\./g, "");
@@ -616,11 +619,17 @@ $(document).ready(function(){
 		jumlah_zakat = parseInt(jumlah_seluruh_harta) * (2.5 / 100);
 		nisab = parseInt(harga_emas)*85;
 		nisab_pertahun = parseInt(nisab)/12;
+        //document.write(jumlah_seluruh_harta);
+        //document.write("\n");
+        //document.write(nisab_pertahun);
 		
 		wajib = "Wajib";
-		if (parseInt(jumlah_seluruh_harta) < parseInt(nisab_pertahun)) {
+		if (parseInt(jumlah_seluruh_harta) < parseInt(nisab)) {
 			wajib = 'Tidak Wajib';
+            jumlah_zakat = 0;
 		}
+        //document.write("\n");
+        //document.write(wajib);
 
 		$('#hasil_total').html(numberWithCommas(jumlah_seluruh_harta));
 		$('#nisab').html(numberWithCommas(nisab));
@@ -881,6 +890,7 @@ $(document).ready(function(){
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <style type="text/css">
 
 	a.float {
